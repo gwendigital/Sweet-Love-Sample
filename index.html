@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sweet Love — Gwen Digital Demo</title>
+<style>
+:root{
+  --pink:#e95f82; --pink2:#ff91ac; --rose:#b6385b;
+  --cream:#fff9f7; --card:#ffffffcc; --ink:#40252d;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 20% 10%,#ffdbe5 0,transparent 26%),
+    radial-gradient(circle at 85% 30%,#ffe6ed 0,transparent 24%),
+    linear-gradient(180deg,#fffafa,#fff1f5 55%,#fffaf8);
+  overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.28;
+  background-image:radial-gradient(#f28ca8 1px,transparent 1px);
+  background-size:28px 28px;
+}
+.container{width:min(1100px,92%);margin:auto;position:relative;z-index:2}
+nav{
+  position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
+  background:#fff8fbdd;border-bottom:1px solid #f7c8d4;
+}
+nav .inner{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+.brand{font-family:Georgia,serif;font-style:italic;font-size:24px;color:var(--rose)}
+nav a{color:var(--ink);text-decoration:none;margin-left:18px;font-size:14px}
+.hero{min-height:92vh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:42px;padding:55px 0}
+.hero-photo{
+  position:relative;border-radius:40px;overflow:hidden;box-shadow:0 25px 70px #c74f7240;
+  transform:rotate(-1deg);border:8px solid #fff;
+}
+.hero-photo img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover}
+.tag{display:inline-block;background:#fff;border:1px solid #f5bccb;color:var(--rose);padding:9px 14px;border-radius:999px;font-size:13px}
+h1{font-family:Georgia,serif;font-size:clamp(54px,8vw,98px);line-height:.92;margin:20px 0;color:var(--rose);font-weight:500}
+.sub{font-size:20px;line-height:1.6;max-width:580px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;margin-top:24px;
+  border:0;background:linear-gradient(135deg,var(--pink),var(--pink2));
+  color:white;padding:15px 24px;border-radius:999px;font-weight:700;cursor:pointer;
+  box-shadow:0 12px 30px #e75d8050;text-decoration:none;
+}
+.section{padding:80px 0}
+.section h2{font-family:Georgia,serif;font-size:42px;color:var(--rose);margin:0 0 22px}
+.card{background:var(--card);border:1px solid #f4c6d1;border-radius:28px;padding:28px;box-shadow:0 15px 50px #d77c9630}
+.music{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.music small{display:block;color:#8e6671;margin-top:4px}
+.music button{border:0;background:var(--rose);color:#fff;width:54px;height:54px;border-radius:50%;font-size:20px;cursor:pointer}
+.letter{font-size:18px;line-height:1.85}
+.highlight{color:var(--rose);font-weight:700}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gallery figure{margin:0;border:7px solid white;border-radius:18px;overflow:hidden;box-shadow:0 12px 28px #aa52662f;background:#fff;transform:rotate(var(--r))}
+.gallery img{width:100%;height:250px;object-fit:cover;display:block}
+.reasons{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.reason{text-align:center;padding:24px 14px}
+.icon{width:54px;height:54px;margin:auto auto 12px;border-radius:50%;display:grid;place-items:center;background:#ffd8e2;font-size:25px}
+.surprise{text-align:center;background:linear-gradient(135deg,#ffe1e9,#fff7f8)}
+#secret{display:none;margin-top:18px;font-family:Georgia,serif;font-size:24px;color:var(--rose)}
+footer{text-align:center;padding:35px 15px 60px;color:#8d6670;font-size:13px}
+.floating{position:fixed;z-index:1;pointer-events:none;opacity:.55;animation:float 7s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-18px) rotate(8deg)}}
+@media(max-width:800px){
+  nav .links{display:none}
+  .hero{grid-template-columns:1fr;padding:35px 0 55px}
+  .hero-photo{order:2}
+  h1{font-size:64px}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .gallery img{height:220px}
+  .reasons{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+  .gallery img{height:180px}
+  .section{padding:58px 0}
+  .reasons{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="floating" style="top:18%;left:3%;font-size:32px">♡</div>
+<div class="floating" style="top:42%;right:3%;font-size:42px;animation-delay:1.5s">♡</div>
+<div class="floating" style="top:72%;left:5%;font-size:28px;animation-delay:3s">✦</div>
+
+<nav>
+  <div class="container inner">
+    <div class="brand">Sweet Love ♡</div>
+    <div class="links">
+      <a href="#letter">Letter</a><a href="#gallery">Gallery</a><a href="#reasons">Reasons</a><a href="#surprise">Surprise</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+<section class="hero">
+  <div class="hero-photo"><img src="photo1.jpg" alt="Sweet Love demo photo"></div>
+  <div>
+    <span class="tag">Gwen Digital • Sweet Love Demo</span>
+    <h1>For you,<br>always.</h1>
+    <p class="sub">A little corner of the internet made for the memories, laughter, and quiet moments that make someone feel like home. ♡</p>
+    <a class="btn" href="#letter">Open this ♡</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="card music">
+    <div>
+      <strong>♫ “Dilaw” by Janice</strong>
+    </div>
+    <audio id="song" autoplay loop preload="auto"><source src="janice-cut.mp3" type="audio/mpeg"></audio>
+  </div>
+</section>
+
+<section id="letter" class="section">
+  <div class="card letter">
+    <h2>A little love letter for you ♡</h2>
+    <p>Hi, love.</p>
+    <p>You make ordinary days feel a little lighter and the good ones even more special. Thank you for the small things, the random laughs, the comfort, and the moments that somehow become memories I want to keep.</p>
+    <p>I hope you always remember that <span class="highlight">you are appreciated, believed in, and cared for</span>—not only when everything is easy, but even on the days when life feels a little too much.</p>
+    <p>I may not always have the perfect words, but if there is one thing I hope this little page can remind you of, it is this: having you in my life is something I will always be grateful for.</p>
+    <p>Here’s to more laughter, more memories, more adventures, and more moments that feel like us. ♡</p>
+    <p><em>Yours, always.</em></p>
+  </div>
+</section>
+
+<section id="gallery" class="section">
+  <h2>Our favorite moments ♡</h2>
+  <div class="gallery">
+    <figure style="--r:-1.5deg"><img src="photo1.jpg" alt=""></figure>
+    <figure style="--r:1.2deg"><img src="photo2.jpg" alt=""></figure>
+    <figure style="--r:-.7deg"><img src="photo3.jpg" alt=""></figure>
+    <figure style="--r:1.6deg"><img src="photo4.jpg" alt=""></figure>
+    <figure style="--r:1deg"><img src="photo5.jpg" alt=""></figure>
+    <figure style="--r:-1.4deg"><img src="photo6.jpg" alt=""></figure>
+    <figure style="--r:.8deg"><img src="photo7.jpg" alt=""></figure>
+    <figure style="--r:-.9deg"><img src="photo8.jpg" alt=""></figure>
+  </div>
+</section>
+
+<section id="reasons" class="section">
+  <h2>Little reminders ♡</h2>
+  <div class="reasons">
+    <div class="card reason"><div class="icon">♡</div><b>You make me smile</b><p>Even on the most ordinary days.</p></div>
+    <div class="card reason"><div class="icon">☆</div><b>I believe in you</b><p>Especially when you forget to believe in yourself.</p></div>
+    <div class="card reason"><div class="icon">♫</div><b>You make memories better</b><p>Even the simplest moments feel worth keeping.</p></div>
+    <div class="card reason"><div class="icon">☁</div><b>You feel like comfort</b><p>A calm place in the middle of everything.</p></div>
+    <div class="card reason"><div class="icon">✦</div><b>You are appreciated</b><p>More than words can fully explain.</p></div>
+  </div>
+</section>
+
+<section id="surprise" class="section">
+  <div class="card surprise">
+    <h2>A little surprise for you ♡</h2>
+    <p>Would you keep choosing moments like these?</p>
+    <button class="btn" id="surpriseBtn">Always ♡</button>
+    <div id="secret">Then here’s to all the beautiful memories still waiting for us. ♡</div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div>Fan-made concept • Demo only • Gwen Digital</div>
+  <div style="margin-top:8px">Sweet Love Package — personalized photos, message, song, reminders & interactive surprise.</div>
+</footer>
+
+<script>
+const song = document.getElementById('song');
+song.volume = 0.55;
+
+// Try to start automatically when the page loads.
+window.addEventListener('load', async () => {
+  try { await song.play(); } catch(e) {}
+});
+
+// iPhone/Safari may block sound autoplay.
+// If blocked, the very first tap anywhere on the page starts the song automatically.
+const startSongOnce = async () => {
+  try { await song.play(); } catch(e) {}
+  document.removeEventListener('touchstart', startSongOnce);
+  document.removeEventListener('click', startSongOnce);
+};
+document.addEventListener('touchstart', startSongOnce, { once:true });
+document.addEventListener('click', startSongOnce, { once:true });
+
+document.getElementById('surpriseBtn').addEventListener('click', () => {
+  const s = document.getElementById('secret');
+  s.style.display = 'block';
+  for(let i=0;i<18;i++){
+    const h=document.createElement('div');
+    h.textContent='♡';
+    h.style.cssText=`position:fixed;left:${Math.random()*100}vw;top:100vh;z-index:99;color:#e95f82;font-size:${18+Math.random()*22}px;pointer-events:none;transition:all ${2+Math.random()*2}s ease-out`;
+    document.body.appendChild(h);
+    requestAnimationFrame(()=>{h.style.top='-10vh';h.style.opacity='0'});
+    setTimeout(()=>h.remove(),4000);
+  }
+});
+</script>
+</body>
+</html>
